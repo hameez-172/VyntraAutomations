@@ -1,0 +1,266 @@
+{
+  "name": "Vyntra Discovery Call Alerts",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Vyntra: discovery call alerts\n**Flow 1 (top):** website form -> saved to Google Sheet -> you get an email.\n**Flow 2 (bottom):** a call is booked or cancelled in Calendly -> sheet updated -> you get an email.\n\nBefore activating: connect Google Sheets, Gmail and Calendly credentials, paste your Sheet ID, replace YOUR_EMAIL@gmail.com. Sheet tab must be named Leads with a header row: Received, Name, Practice, Email, Phone, Locations, Interest, Message, Source, Referrer, Status, Call time.",
+        "height": 240,
+        "width": 520
+      },
+      "name": "Read me",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vyntra-lead",
+        "options": {}
+      },
+      "name": "Website form",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        160
+      ],
+      "webhookId": "vyntra-lead-form"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "PASTE_YOUR_GOOGLE_SHEET_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Received": "={{ $json.body.receivedAt }}",
+            "Name": "={{ $json.body.name }}",
+            "Practice": "={{ $json.body.practice }}",
+            "Email": "={{ $json.body.email }}",
+            "Phone": "={{ $json.body.phone }}",
+            "Locations": "={{ $json.body.locations }}",
+            "Interest": "={{ $json.body.interest }}",
+            "Message": "={{ $json.body.message }}",
+            "Source": "={{ $json.body.utm_source || 'direct' }}",
+            "Referrer": "={{ $json.body.referrer }}",
+            "Status": "New lead"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "name": "Save lead",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        260,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "YOUR_EMAIL@gmail.com",
+        "subject": "=New lead: {{ $('Website form').item.json.body.practice }} ({{ $('Website form').item.json.body.name }})",
+        "emailType": "text",
+        "message": "=New website lead\n\nName: {{ $('Website form').item.json.body.name }}\nPractice: {{ $('Website form').item.json.body.practice }}\nEmail: {{ $('Website form').item.json.body.email }}\nPhone: {{ $('Website form').item.json.body.phone }}\nLocations: {{ $('Website form').item.json.body.locations }}\nWants to fix first: {{ $('Website form').item.json.body.interest }}\nMessage: {{ $('Website form').item.json.body.message }}\n\nSource: {{ $('Website form').item.json.body.utm_source || 'direct' }}\nReferrer: {{ $('Website form').item.json.body.referrer }}",
+        "options": {}
+      },
+      "name": "Alert me: new lead",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        520,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "events": [
+          "invitee.created",
+          "invitee.canceled"
+        ]
+      },
+      "name": "Calendly booking",
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        460
+      ],
+      "webhookId": "vyntra-calendly"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "status",
+              "type": "string",
+              "value": "={{ $json.event === 'invitee.canceled' ? 'Call cancelled' : 'Call booked' }}"
+            },
+            {
+              "id": "a2",
+              "name": "name",
+              "type": "string",
+              "value": "={{ $json.payload.name }}"
+            },
+            {
+              "id": "a3",
+              "name": "email",
+              "type": "string",
+              "value": "={{ $json.payload.email }}"
+            },
+            {
+              "id": "a4",
+              "name": "callTime",
+              "type": "string",
+              "value": "={{ $json.payload.scheduled_event.start_time }}"
+            },
+            {
+              "id": "a5",
+              "name": "timezone",
+              "type": "string",
+              "value": "={{ $json.payload.timezone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Tidy booking",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "PASTE_YOUR_GOOGLE_SHEET_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "={{ $json.email }}",
+            "Name": "={{ $json.name }}",
+            "Status": "={{ $json.status }}",
+            "Call time": "={{ $json.callTime }}"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": []
+        },
+        "options": {}
+      },
+      "name": "Update lead status",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        520,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "YOUR_EMAIL@gmail.com",
+        "subject": "=Discovery call: {{ $('Tidy booking').item.json.status }} - {{ $('Tidy booking').item.json.name }}",
+        "emailType": "text",
+        "message": "=Status: {{ $('Tidy booking').item.json.status }}\nName: {{ $('Tidy booking').item.json.name }}\nEmail: {{ $('Tidy booking').item.json.email }}\nCall time (UTC): {{ $('Tidy booking').item.json.callTime }}\nTheir timezone: {{ $('Tidy booking').item.json.timezone }}\n\nOpen the Leads sheet for their website form answers.",
+        "options": {}
+      },
+      "name": "Alert me: call booked",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        780,
+        460
+      ]
+    }
+  ],
+  "connections": {
+    "Website form": {
+      "main": [
+        [
+          {
+            "node": "Save lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save lead": {
+      "main": [
+        [
+          {
+            "node": "Alert me: new lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendly booking": {
+      "main": [
+        [
+          {
+            "node": "Tidy booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tidy booking": {
+      "main": [
+        [
+          {
+            "node": "Update lead status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update lead status": {
+      "main": [
+        [
+          {
+            "node": "Alert me: call booked",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

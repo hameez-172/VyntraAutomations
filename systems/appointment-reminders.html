@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appointment Reminder &amp; Confirmation for Dental Practices | Vyntra Automations</title>
+<meta name="description" content="Patients get a confirmation and a reminder, and your front desk sees who has not confirmed in time to act.">
+<meta name="theme-color" content="#06142A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vyntra Automations">
+<meta property="og:title" content="Appointment Reminder &amp; Confirmation for Dental Practices | Vyntra Automations">
+<meta property="og:description" content="Patients get a confirmation and a reminder, and your front desk sees who has not confirmed in time to act.">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="system">
+<div id="site-header"></div>
+<main id="main">
+
+  <!-- ============ TOP OF PAGE ============ -->
+  <section class="sys-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#our-work">Our Work</a><span>/</span><span>Appointment Reminder &amp; Confirmation</span></nav>
+      <div class="sys-head">
+        <span class="badge">System &middot; 05 of 10</span>
+        <h1>Appointment Reminder &amp; Confirmation</h1>
+        <p class="lead">Patients get a confirmation and a reminder, and your front desk sees who has not confirmed in time to act.</p>
+        <p class="solves-pill"><b>Problem it solves</b><span>No-shows and empty chairs</span></p>
+        <ul class="chips"><li>n8n</li><li>Google Calendar</li><li>SMS / email API</li></ul>
+        <div class="cta-row">
+          <a class="btn btn-cyan js-book" href="../index.html?interest=reminders#contact" data-interest="reminders">Book a discovery call</a>
+          <a class="btn btn-ghost" href="#workflow">See the workflow</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band sky on-light" style="padding-top:clamp(40px,6vw,64px)">
+    <div class="wrap case-body">
+
+      <!-- ===== DEMO VIDEO =====
+           To add your video, put a link or file path in data-src below:
+             YouTube / Loom link:  data-src="https://www.youtube.com/watch?v=XXXX"
+             Your own mp4 file:    data-src="../assets/video/your-file.mp4"
+           Leave it empty to show "Demo video coming soon". -->
+
+      <div class="two">
+        <div class="block"><h2>The problem</h2><p>A forgotten appointment is an empty chair, and that time cannot be sold twice. Calling every patient to confirm takes hours your team does not have.</p></div>
+        <div class="block"><h2>The solution</h2><p>Each booking triggers a confirmation, followed by reminders at the times you choose. Patients reply to confirm or reschedule, and anyone who has not confirmed is flagged to your front desk while there is still time to fill the slot.</p></div>
+      </div>
+
+      <div class="two">
+        <div class="block"><h2>What it does</h2><ul class="checks" style="grid-template-columns:1fr"><li>Sends booking confirmations automatically</li><li>Sends reminders at the times you choose</li><li>Patients confirm or reschedule with one reply</li><li>Flags unconfirmed appointments to your team</li><li>Updates appointment status in the calendar</li><li>Keeps messages short and free of treatment details</li></ul></div>
+        <div class="block"><h2>What it looks like</h2>
+        <div class="sample on-light">
+          <div class="call-top"><strong>Sample text thread</strong><span>48 hours before the visit</span></div>
+          <div class="thread"><div class="msg us"><small>Practice (automated)</small><span>Reminder: you have an appointment at Sample Dental on Tue, Nov 3 at 9:00 AM. Reply C to confirm or R to reschedule.</span></div><div class="msg them"><small>Patient</small><span>C</span></div><div class="msg us"><small>Practice (automated)</small><span>Thanks, you are confirmed. See you Tuesday.</span></div></div>
+          <ul class="chips"><li>&#10003; Status set to confirmed</li><li>&#10003; No staff action needed</li></ul>
+        </div>
+        </div>
+      </div>
+
+      <div class="block"><h2>Workflow</h2><ol class="flow"><li>Appointment is booked</li><li>Confirmation goes out</li><li>Reminder is sent before the visit</li><li>Patient replies to confirm or reschedule</li><li>Unconfirmed visits are flagged to your team</li></ol></div>
+
+      <div class="block" id="workflow">
+        <h2>Behind the scenes</h2>
+                <div class="shots">
+          <figure class="shot"><img src="../assets/img/wf-appointment-reminders.png" alt="n8n workflow: daily schedule reads appointments due tomorrow and sends email, WhatsApp and SMS reminders, plus a reply handler that updates confirmation status" width="1510" height="640" loading="lazy"><figcaption>The n8n workflow: every morning it finds tomorrow’s appointments and sends email, WhatsApp and SMS reminders. Patient replies update the confirmation status.</figcaption></figure>
+        </div>
+      </div>
+      <div class="block tech"><h2>Technology</h2><ul class="chips"><li>n8n</li><li>Google Calendar</li><li>SMS / email API</li></ul></div>
+
+      <div class="case-cta">
+        <div><h2>Want this running in your practice?</h2><p>See it working first. I will map the workflow around the way your team already works.</p></div>
+        <a class="btn btn-cyan js-book" href="../index.html?interest=reminders#contact" data-interest="reminders">Book a discovery call</a>
+      </div>
+
+      <div class="pager">
+        <a href="appointment-management.html"><small>&larr; Previous</small><b>Appointment Management</b></a>
+        <a class="next-link" href="patient-followup.html"><small>Next &rarr;</small><b>Patient Follow-up Automation</b></a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<div id="site-footer"></div>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

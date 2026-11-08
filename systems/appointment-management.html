@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appointment Management for Dental Practices | Vyntra Automations</title>
+<meta name="description" content="Booking without phone tag, and a calendar that keeps itself up to date.">
+<meta name="theme-color" content="#06142A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vyntra Automations">
+<meta property="og:title" content="Appointment Management for Dental Practices | Vyntra Automations">
+<meta property="og:description" content="Booking without phone tag, and a calendar that keeps itself up to date.">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="system">
+<div id="site-header"></div>
+<main id="main">
+
+  <!-- ============ TOP OF PAGE ============ -->
+  <section class="sys-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#our-work">Our Work</a><span>/</span><span>Appointment Management</span></nav>
+      <div class="sys-head">
+        <span class="badge">System &middot; 04 of 10</span>
+        <h1>Appointment Management</h1>
+        <p class="lead">Booking without phone tag, and a calendar that keeps itself up to date.</p>
+        <p class="solves-pill"><b>Problem it solves</b><span>Phone tag every time someone books, moves or cancels</span></p>
+        <ul class="chips"><li>Google Calendar / booking software</li><li>n8n</li></ul>
+        <div class="cta-row">
+          <a class="btn btn-cyan js-book" href="../index.html?interest=reminders#contact" data-interest="reminders">Book a discovery call</a>
+          <a class="btn btn-ghost" href="#workflow">See how it works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band sky on-light" style="padding-top:clamp(40px,6vw,64px)">
+    <div class="wrap case-body">
+
+      <!-- ===== DEMO VIDEO =====
+           To add your video, put a link or file path in data-src below:
+             YouTube / Loom link:  data-src="https://www.youtube.com/watch?v=XXXX"
+             Your own mp4 file:    data-src="../assets/video/your-file.mp4"
+           Leave it empty to show "Demo video coming soon". -->
+
+      <div class="two">
+        <div class="block"><h2>The problem</h2><p>Every booking means calls and texts back and forth, and someone retypes the details into the calendar. Now and then a slot is double-booked or a change never makes it in.</p></div>
+        <div class="block"><h2>The solution</h2><p>Patients request a time online. The system checks your calendar, books the visit if the slot is free, sends the confirmation and logs it. If the slot is taken, the patient hears straight away. Every morning, tomorrow’s patients get a reminder.</p></div>
+      </div>
+
+      <div class="two">
+        <div class="block"><h2>What it does</h2><ul class="checks" style="grid-template-columns:1fr"><li>Online appointment requests</li><li>Live availability check against your calendar</li><li>Automatic booking confirmation</li><li>Instant reply when a slot is already taken</li><li>Every booking logged to a sheet</li><li>Daily reminders for tomorrow’s patients</li></ul></div>
+        <div class="block"><h2>What it looks like</h2>
+        <div class="sample on-light">
+          <div class="call-top"><strong>Sample confirmation</strong><span>Booking request from the website</span></div><div class="thread"><div class="msg them"><small>Patient (website form)</small><span>Cleaning for Daniel Reyes, Friday at 10:30 AM.</span></div><div class="msg us"><small>Practice (automated)</small><span>Friday at 10:30 AM is open and you are booked, Daniel. A confirmation is on its way to your inbox.</span></div><div class="msg us"><small>Practice (automated, next morning)</small><span>Reminder: your visit at Sample Dental is tomorrow at 10:30 AM.</span></div></div><ul class="chips"><li>&#10003; Calendar updated</li><li>&#10003; Booking logged</li><li>&#10003; Reminder queued</li></ul>
+        </div>
+        </div>
+      </div>
+
+      <div class="block" id="workflow"><h2>Workflow</h2><ol class="flow"><li>Patient submits a request</li><li>Availability is checked against your calendar</li><li>Event is created and the booking is logged</li><li>Confirmation goes to the patient</li><li>Reminder goes out the day before</li></ol></div>
+
+            <div class="block">
+        <h2>Behind the scenes</h2>
+        <div class="shots">
+          <figure class="shot"><img src="../assets/img/wf-appointment-management.png" alt="n8n workflow: booking webhook, calendar availability check, then event creation, sheet log and confirmation email, with a daily 9 AM reminder run" width="1700" height="755" loading="lazy"><figcaption>The n8n workflow: a booking request checks your calendar, creates the event, logs it and emails the confirmation. If the slot is taken, the patient is told at once. A daily 9 AM run sends tomorrow’s reminders. Click the image to enlarge it.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="block tech"><h2>Technology</h2><ul class="chips"><li>Google Calendar / booking software</li><li>n8n</li></ul></div>
+
+      <div class="case-cta">
+        <div><h2>Want this running in your practice?</h2><p>See it working first. I will map the workflow around the way your team already works.</p></div>
+        <a class="btn btn-cyan js-book" href="../index.html?interest=reminders#contact" data-interest="reminders">Book a discovery call</a>
+      </div>
+
+      <div class="pager">
+        <a href="missed-call-recovery.html"><small>&larr; Previous</small><b>Missed Call Recovery</b></a>
+        <a class="next-link" href="appointment-reminders.html"><small>Next &rarr;</small><b>Appointment Reminder &amp; Confirmation</b></a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<div id="site-footer"></div>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
