@@ -97,23 +97,43 @@
     </div>
   </section>
 
-  <!-- ============ LIVE DEMO (Loom) ============ -->
+  <!-- ============ LIVE DEMOS (tabs) ============ -->
   <section class="band dark" id="demo">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Proof, not promises</p>
-        <h2>Watch an inquiry become a booked patient</h2>
-        <p>A website inquiry comes in, the AI collects the missing details and qualifies it, the right person on your team is assigned and the CRM record updates itself. This is a working demo build, not a mock-up.</p>
+        <h2>Watch it handle a real patient</h2>
+        <p>These are working demo builds, not mock-ups. Pick one and press play.</p>
       </div>
       <div class="demo-wrap">
-        <div class="demo" data-src="https://www.loom.com/share/d9619c28f7214aeaaeecba985f462e21" data-poster="" data-title="AI Lead Qualification &amp; CRM demo"></div>
-        <div class="cta-row demo-cta">
-          <a class="btn btn-cyan js-book" href="#contact" data-interest="crm">Book a discovery call</a>
-          <a class="btn btn-ghost" href="systems/lead-qualification-crm.html">Read the case study</a>
+        <div class="demo-tabs" role="tablist">
+          <button type="button" role="tab" class="is-on" data-pane="p-voice" aria-selected="true">Voice receptionist</button>
+          <button type="button" role="tab" data-pane="p-chat" aria-selected="false">Booking chatbot</button>
+          <button type="button" role="tab" data-pane="p-crm" aria-selected="false">Lead to CRM</button>
+        </div>
+        <div class="demo-pane" id="p-voice">
+          <div class="demo" data-src="assets/video/ai-receptionist-demo.mp4" data-poster="assets/video/ai-receptionist-poster.jpg" data-title="AI Voice Receptionist demo"></div>
+          <p class="demo-caption">A patient calls after hours. The AI answers, asks what they need and books the visit while they are still on the line.</p>
+          <div class="cta-row demo-cta"><a class="btn btn-cyan js-book" href="#contact" data-interest="voice">Book a discovery call</a><a class="btn btn-ghost" href="systems/voice-receptionist.html">See how it works</a></div>
+        </div>
+        <div class="demo-pane" id="p-chat" hidden>
+          <div class="demo" data-src="assets/video/ivy-chatbot-demo.mp4" data-poster="assets/video/ivy-chatbot-poster.jpg" data-title="Ivy booking chatbot demo"></div>
+          <p class="demo-caption">A visitor asks a question at 9 PM. The chatbot answers it, collects the details and books the appointment.</p>
+          <div class="cta-row demo-cta"><a class="btn btn-cyan js-book" href="#contact" data-interest="chatbot">Book a discovery call</a><a class="btn btn-ghost" href="systems/website-chatbot.html">See how it works</a></div>
+        </div>
+        <div class="demo-pane" id="p-crm" hidden>
+          <div class="demo" data-src="https://www.loom.com/share/d9619c28f7214aeaaeecba985f462e21" data-poster="" data-title="AI Lead Qualification &amp; CRM demo"></div>
+          <p class="demo-caption">An inquiry comes in, the AI qualifies it, the right person is assigned and the CRM record updates itself.</p>
+          <div class="cta-row demo-cta"><a class="btn btn-cyan js-book" href="#contact" data-interest="crm">Book a discovery call</a><a class="btn btn-ghost" href="systems/lead-qualification-crm.html">Read the case study</a></div>
         </div>
       </div>
     </div>
   </section>
+<script>
+(function(){var tabs=document.querySelectorAll('.demo-tabs button');tabs.forEach(function(b){b.addEventListener('click',function(){
+tabs.forEach(function(x){x.classList.remove('is-on');x.setAttribute('aria-selected','false');});b.classList.add('is-on');b.setAttribute('aria-selected','true');
+document.querySelectorAll('.demo-pane').forEach(function(p){var on=p.id===b.dataset.pane;p.hidden=!on;if(!on){var v=p.querySelector('video');if(v)v.pause();var f=p.querySelector('iframe');if(f)f.src=f.src;}});});});})();
+</script>
 
   <!-- ============ WHO IT IS FOR ============ -->
   <section class="band white on-light" id="fit">
