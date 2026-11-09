@@ -4,14 +4,67 @@
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/li",
+      "destination": "/?utm_source=linkedin&utm_medium=profile&utm_campaign=outreach",
+      "permanent": false
+    },
+    {
+      "source": "/li-post",
+      "destination": "/?utm_source=linkedin&utm_medium=post&utm_campaign=outreach",
+      "permanent": false
+    },
+    {
+      "source": "/li-dm",
+      "destination": "/?utm_source=linkedin&utm_medium=dm&utm_campaign=outreach",
+      "permanent": false
+    },
+    {
+      "source": "/li-outreach",
+      "destination": "/?utm_source=linkedin&utm_medium=outreach&utm_campaign=outreach",
+      "permanent": false
+    },
+    {
+      "source": "/li-about",
+      "destination": "/?utm_source=linkedin&utm_medium=about&utm_campaign=profile",
+      "permanent": false
+    },
+    {
+      "source": "/li-featured",
+      "destination": "/?utm_source=linkedin&utm_medium=featured&utm_campaign=profile",
+      "permanent": false
+    },
+    {
+      "source": "/li-chatbot",
+      "destination": "/?utm_source=linkedin&utm_medium=featured&utm_campaign=chatbot&demo=chatbot",
+      "permanent": false
+    },
+    {
+      "source": "/li-voice",
+      "destination": "/?utm_source=linkedin&utm_medium=featured&utm_campaign=voice&demo=voice",
+      "permanent": false
     }
   ]
 }

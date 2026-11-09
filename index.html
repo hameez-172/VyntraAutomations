@@ -135,7 +135,7 @@ tabs.forEach(function(x){x.classList.remove('is-on');x.setAttribute('aria-select
 document.querySelectorAll('.demo-pane').forEach(function(p){var on=p.id===b.dataset.pane;p.hidden=!on;if(!on){var v=p.querySelector('video');if(v)v.pause();var f=p.querySelector('iframe');if(f)f.src=f.src;}});});});})();
 </script>
 
-  <!-- ============ WHO IT IS FOR ============ -->
+    <!-- ============ WHO IT IS FOR ============ -->
   <section class="band white on-light" id="fit">
     <div class="wrap">
       <div class="sec-head">
@@ -366,5 +366,12 @@ var t=Math.round(a*(b/100)*52*d);o.textContent='About '+t.toLocaleString()+' a y
 <script src="assets/js/analytics.js"></script>
 <script src="assets/js/layout.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+window.addEventListener('load',function(){var d=new URLSearchParams(location.search).get('demo');
+var map={voice:'p-voice',chatbot:'p-chat',crm:'p-crm'};if(!d||!map[d])return;
+var tab=document.querySelector('.demo-tabs button[data-pane="'+map[d]+'"]');if(tab)tab.click();
+var s=document.getElementById('demo');if(s)s.scrollIntoView();
+var v=document.querySelector('#'+map[d]+' video');if(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}});
+</script>
 </body>
 </html>
